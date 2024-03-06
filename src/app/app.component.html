@@ -2,39 +2,26 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h3>Brands</h3>
-            <hr>
+        <div class="col-md-3">
             <app-brand></app-brand>
-        </div>
-        <div class="col-md-6">
-            <h3>Colors</h3>
-            <hr>
+            <br>
             <app-color></app-color>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Customers</h3>
-            <hr>
-            <app-customer></app-customer>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
             <h3>Cars</h3>
             <hr>
-            <app-cardetail></app-cardetail>
+            <router-outlet></router-outlet>
         </div>
     </div>
 
-    <div class="row">
+
+    <!-- <div class="row">
         <div class="col-md-12">
             <h3>Rentals</h3>
             <hr>
             <app-rentaldetail></app-rentaldetail>
         </div>
-    </div>
+    </div> -->
     
-    <router-outlet></router-outlet>
 </div>
 

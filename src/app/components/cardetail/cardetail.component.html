@@ -1,18 +1,17 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Car Name</th>
-            <th>Brand Name</th>
-            <th>Color Name</th>
-            <th>Daily Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let cardetail of cardetails">
-            <td>{{ cardetail.carName }}</td>
-            <td>{{ cardetail.brandName }}</td>
-            <td>{{ cardetail.colorName }}</td>
-            <td>{{ cardetail.dailyPrice }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <div *ngFor="let cardetail of cardetails" class="row">
+        <h3 class="text-center">{{ cardetail.carName }}</h3>
+        <div class="col-md-8">
+            <div class="container p-3 m-3" *ngFor="let carImage of carImages;">
+                <img [src]="getImagePath(carImage)" class="img-fluid border border-black" alt="car image" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 m-3">
+                <h4 class="card-text">Brand Name : {{ cardetail.brandName }}</h4>
+                <h4 class="card-text">Color Name : {{ cardetail.colorName }}</h4>
+                <button><a href="">Price : {{cardetail.dailyPrice}}</a></button>
+            </div>
+        </div>
+    </div>
+</div>
