@@ -24,4 +24,5 @@ export class RentaldetailComponent implements OnInit {
       this.rentaldetails = response.data
     })
   }
+
 }

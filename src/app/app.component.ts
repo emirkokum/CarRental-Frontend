@@ -7,12 +7,14 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { RentaldetailComponent } from './components/rentaldetail/rentaldetail.component';
 import { CarComponent } from './components/car/car.component';
+import { CarFilterComponent } from './components/car-filter/car-filter.component';
+
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink, BrandComponent, NaviComponent, ColorComponent, CustomerComponent, CardetailComponent, RentaldetailComponent, CarComponent],
+  imports: [CarFilterComponent,RouterOutlet,RouterLink, BrandComponent, NaviComponent, ColorComponent, CustomerComponent, CardetailComponent, RentaldetailComponent, CarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

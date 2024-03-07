@@ -36,6 +36,13 @@ export class CarDetailService {
     return this.httpClient.get<DataResponseModel<CarDetail>>(newPath)
   }
 
+  getCarDetailsByBrandAndColorID(brandId:number,colorId:number){
+    let newPath = this.apiUrl + "Cars/getcardetailsbybrandandcolorid?brandId="+ brandId +"&carId=" + colorId
+    console.log(newPath);
+    return this.httpClient.get<DataResponseModel<CarDetail>>(newPath)
+    
+  }
+
   getCarImagesByCarId(carId:number){
     let newPath = this.apiUrl + "CarImages/getbycarid?Id=" + carId
     return this.httpClient.get<DataResponseModel<CarImage>>(newPath)

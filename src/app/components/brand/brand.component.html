@@ -2,3 +2,4 @@
   <li (click)="clearCurrentBrand()" [class]="getAllBrandClass()" routerLink="/cars" >All Brands</li>
   <li (click)="setCurrentBrand(brand)" routerLink="cars/brand/{{brand.id}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{ brand.name }}</li>
 </ul>
+

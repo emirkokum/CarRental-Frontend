@@ -1,28 +1,29 @@
-<!-- <div class="container">
+<div class="mb-3">
+    <label for="filterText" class="form-label">Search Car</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search Car">
+</div>
+
+<div class="container p-0 my-3">
     <div class="row">
-        <div *ngFor="let cardetail of cardetails" class="col-md-4">
-            <div class="card m-3 p-3">
-                <div class="card-body">
-                    <h3 class="card-title text-center mb-4">{{ cardetail.carName}}</h3>
-                    <h6 class="card-title">Brand : {{ cardetail.brandName }}</h6>
-                    <h6 class="card-title">Color : {{ cardetail.colorName }}</h6>
-                    <a routerLink="/cardetail/{{cardetail.id}}" class="btn btn-primary mt-3">Show Car Details</a>
-                </div>
-            </div>
-        </div>
+        <app-car-filter></app-car-filter>
     </div>
-</div> -->
+</div>
+
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div *ngFor="let cardetail of cardetails" class="col">
+            <div *ngFor="let cardetail of cardetails | filterPipe:filterText" class="col">
                 <div class="card shadow-sm">
+                    <img style="height: 300px; object-fit: cover;" class="card-img-top" [src]="getImagePath(cardetail)"
+                        alt="">
                     <div class="card-body">
-                        <h3 style="text-transform: capitalize;" class="card-title text-center mb-4">{{ cardetail.carName}}</h3>
+                        <h6 style="text-transform: capitalize;" class="card-title text-center mb-4">{{
+                            cardetail.carName}}</h6>
                         <p class="card-text"><b>Brand Name:</b> {{ cardetail.brandName }} </p>
                         <p class="card-text"><b>Color Name:</b> {{ cardetail.colorName }} </p>
                         <div class="d-flex justify-content-center align-items-center p-3">
-                            <button routerLink="/cardetail/{{cardetail.id}}" type="button" class="btn btn-primary">Car Details</button>
+                            <button routerLink="/cardetail/{{cardetail.id}}" type="button" class="btn btn-primary">Car
+                                Details</button>
                         </div>
                     </div>
                 </div>

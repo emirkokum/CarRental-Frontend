@@ -16,4 +16,5 @@ export class RentalDetailService {
   getRentalDetails():Observable<DataResponseModel<RentalDetail>>{
     return this.httpClient.get<DataResponseModel<RentalDetail>>(this.apiUrl);
   }
+  
 }
