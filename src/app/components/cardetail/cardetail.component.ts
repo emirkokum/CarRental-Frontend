@@ -7,6 +7,7 @@ import { CarImage } from '../../models/carImage';
 import { Rental } from '../../models/rental';
 import { RentalService } from '../../services/rental.service';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cardetail',
@@ -27,7 +28,7 @@ export class CardetailComponent implements OnInit {
   carsRentDate: Date
   carsReturnDate: Date
 
-  constructor(private router: Router, private rentalService: RentalService, private carDetailService: CarDetailService, private activatedRoute: ActivatedRoute) { }
+  constructor(private toastr:ToastrService,private router: Router, private rentalService: RentalService, private carDetailService: CarDetailService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -75,33 +76,25 @@ export class CardetailComponent implements OnInit {
     })
   }
 
+
   checkRentalDates(): boolean {
-    if (!this.carsRentDate) {
-      if (this.returnDate < this.rentDate) {
-        console.log("Dönüş Tarihi Kiralama Tarihinden Önce Olamaz");
-        return false
-      } else if (!this.rentDate && !this.returnDate) {
-        return false
-      } else if (this.rentDate && this.returnDate) {
-        this.router.navigate(['/cardetail/' + this.currentCarId + '/payment']);
-        return true
-      }
-      else {
-        console.log("Aracı kiralayamazsın");
-        return false
-      }
-    } else {
-      if (this.rentDate > this.carsRentDate && this.returnDate > this.carsReturnDate) {
-        console.log("Aracı Kiralayabilirsin");
-        this.router.navigate(['/cardetail/' + this.currentCarId + '/payment']);
-        return true
-      } else {
-        console.log("Aracı kiralayamazsın");
-        return false
+    if (!this.rentDate || !this.returnDate || this.returnDate < this.rentDate) {
+      this.toastr.error("Geçersiz kiralama tarihleri. Lütfen doğru tarihleri girin.")
+      this.router.navigate(['/cardetail/' + this.currentCarId]);
+      return false;
+    }
+    if (this.carsRentDate && this.carsReturnDate) {
+      if (!(this.returnDate < this.carsRentDate || this.rentDate > this.carsReturnDate)) {
+        this.toastr.error("Seçilen tarih aralığı zaten başka bir kullanıcı tarafından kiralanmış.")
+        this.router.navigate(['/cardetail/' + this.currentCarId]);
+        return false;
       }
     }
-
+    this.router.navigate(['/cardetail/' + this.currentCarId + '/payment']);
+    this.toastr.success("Seçtiğiniz tarihler uygun")
+    return true;
   }
+
 
 
 }

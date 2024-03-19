@@ -1,0 +1,68 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <p class="title">Add Car</p>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+                    <div class="my-3">
+                        <label for="brandSelect">Brands</label>
+                        <select formControlName="brandId" name="brandSelect" class="form-select"
+                            aria-label="Default select example">
+                            <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+                        </select>
+                    </div>
+                </form>
+                <form [formGroup]="carAddForm">
+                    <div class="my-3">
+                        <label for="colorSelect">Colors</label>
+                        <select formControlName="colorId" name="colorSelect" class="form-select"
+                            aria-label="Default select example">
+                            <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+                        </select>
+                    </div>
+                </form>
+                <form [formGroup]="carAddForm">
+                    <div class="my-3">
+                        <label for="modelYear">Model Year</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="modelYear" formControlName="modelYear"
+                                placeholder="Model Year" />
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="carAddForm">
+                    <div class="my-3">
+                        <label for="dailyPrice">Daily Price</label>
+                        <div class="form-group">
+                            <input class="form-control" type="number" id="dailyPrice" formControlName="dailyPrice"
+                                placeholder="Price" />
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="carAddForm">
+                    <div class="my-3">
+                        <label for="carName">Car Name</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="carName" formControlName="carName"
+                                placeholder="Car Name" />
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="my-3">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="carImageInput">Upload</label>
+                            <input (change)="onChange($event)" type="file" class="form-control" id="carImageInput">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="card-footer d-flex justify-content-center py-3">
+                <button class="btn btn-primary w-50" (click)="addwithCarImage()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

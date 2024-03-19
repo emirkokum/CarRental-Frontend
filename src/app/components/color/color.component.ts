@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Color } from '../../models/color';
 import { ColorService } from '../../services/color.service';
 import { RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-color',
@@ -27,7 +28,6 @@ export class ColorComponent {
             this.colors = response.data
         })
     }
-
 
     setCurrentColor(color: Color) {
         this.currentColor = color;

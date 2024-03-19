@@ -1,0 +1,42 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card mt-2">
+            <div class="card-header">
+                <h5 class="text-center my-2">Add Color</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="colorAddForm">
+                    <div class="my-3">
+                        <label for="name">Color Name</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="name" formControlName="name"
+                                placeholder="Color Name" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer d-flex justify-content-center py-3">
+                <button class="btn btn-primary w-50" (click)="add()">Add</button>
+            </div>
+        </div>
+        <div class="py-5 bg-body-tertiary rounded shadow mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let color of colors">
+                        <td>{{ color.id }}</td>
+                        <td>{{ color.name }}</td>
+                        <td class="d-flex justify-content-end"><button (click)="deleteColor(color)"
+                                class="btn btn-danger ">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>

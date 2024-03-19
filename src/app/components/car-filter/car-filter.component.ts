@@ -6,6 +6,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Color } from '../../models/color';
 import { CarDetailService } from '../../services/cardetail.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-car-filter',
@@ -25,7 +26,7 @@ export class CarFilterComponent implements OnInit {
 	routeLink = "/cars/"
 
 
-	constructor(private activatedRoute: ActivatedRoute, private carDetailService: CarDetailService, private brandService: BrandService, private colorService: ColorService) { }
+	constructor(private toastr: ToastrService, private activatedRoute: ActivatedRoute, private carDetailService: CarDetailService, private brandService: BrandService, private colorService: ColorService) { }
 
 	ngOnInit(): void {
 		this.getBrands()

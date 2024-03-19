@@ -1,3 +1,4 @@
+<h1 class="text-center display-4 main-title">Daily Cars</h1>
 <div class="mb-3">
     <label for="filterText" class="form-label">Search Car</label>
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search Car">
@@ -9,15 +10,15 @@
     </div>
 </div>
 
-<div class="album py-5 bg-body-tertiary">
+<div class="album py-5 bg-body-tertiary rounded shadow">
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
             <div *ngFor="let cardetail of cardetails | filterPipe:filterText" class="col">
                 <div class="card shadow-sm">
                     <img style="height: 300px; object-fit: cover;" class="card-img-top" [src]="getImagePath(cardetail)"
                         alt="">
                     <div class="card-body">
-                        <h6 style="text-transform: capitalize;" class="card-title text-center mb-4">{{
+                        <h6 style="text-transform: capitalize;" class="card-title text-center fw-bold mb-4">{{
                             cardetail.carName}}</h6>
                         <p class="card-text"><b>Brand Name:</b> {{ cardetail.brandName }} </p>
                         <p class="card-text"><b>Color Name:</b> {{ cardetail.colorName }} </p>
