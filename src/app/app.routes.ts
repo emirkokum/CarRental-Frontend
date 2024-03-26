@@ -7,6 +7,10 @@ import { BrandComponent } from './components/brand/brand.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ColorComponent } from './components/color/color.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     { path: "", pathMatch: 'full', component: CarComponent },
@@ -19,10 +23,12 @@ export const routes: Routes = [
     { path: "cardetail/:carId", component: CardetailComponent },
     { path: "cardetail/:carId/payment", component: PaymentComponent },
     { path: "cars/brand/:brandId/color/:colorId", component: CarComponent },
-    { path: "cars/add", component:CarAddComponent},
-    { path: "brands",component:BrandComponent},
-    { path: "brands/add",component:BrandAddComponent},
-    { path: "colors",component:ColorComponent},
-    { path: "colors/add",component:ColorAddComponent},
-
+    { path: "cars/add", component: CarAddComponent,canActivate:[adminGuard]  },
+    { path: "brands", component: BrandComponent },
+    { path: "brands/add", component: BrandAddComponent,canActivate:[adminGuard]  },
+    { path: "colors", component: ColorComponent },
+    { path: "colors/add", component: ColorAddComponent,canActivate:[adminGuard] },
+    { path: "register", component: RegisterComponent },
+    { path: "login", component: LoginComponent },
+    { path: "admin", component: AdminComponent }
 ];

@@ -89,6 +89,9 @@ export class CarAddComponent implements OnInit {
         this.carImageService.add(data).subscribe(x => {
           this.toastr.success(response.message, "Success")
           this.router.navigate([""])
+          this.createCarAddForm()
+          this.getBrands()
+          this.getColors()
         })
       }).catch(responseError => {
         for (let i = 0; i < responseError.error.Errors.length; i++) {

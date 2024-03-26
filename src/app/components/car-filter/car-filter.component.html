@@ -10,7 +10,7 @@
   <div class="row g-3">
     <div class="col-md-6">
       <div class="container p-0 d-flex">
-        <select name="brandSelect" (change)="ChangeBrand($event)" class="form-select"
+        <select name="brandSelect" (change)="ChangeBrand($event)" class="form-select rounded-0 car-filter-select"
           aria-label="Default select example">
           <option (click)="clearCurrentBrand()" [class]="getAllBrandClass()" routerLink="/cars">Select Brand</option>
           <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
@@ -20,13 +20,13 @@
 
     <div class="col-md-6">
       <div class="container p-0 d-flex">
-        <select name="colorSelect" (change)="ChangeColor($event)" class="form-select"
+        <select name="colorSelect" (change)="ChangeColor($event)" class="form-select rounded-0 car-filter-select"
           aria-label="Default select example">
           <option (click)="clearCurrentColor()" [class]="getAllColorClass()" routerLink="/cars">Select Color</option>
           <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
         </select>
-        <button type="submit" [routerLink]="changeRouterLink()" class="btn btn-success ms-2">Filtrele</button>
-        <button routerLink="/cars" class="btn btn-warning ms-2">Temizle</button>
+        <button type="submit" [routerLink]="changeRouterLink()" class="btn btn-success ms-2 rounded-0 border">Filter</button>
+        <button routerLink="/cars" class="btn btn-warning ms-2 rounded-0 border">Clear</button>
       </div>
     </div>
   </div>

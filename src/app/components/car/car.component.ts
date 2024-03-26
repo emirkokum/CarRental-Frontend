@@ -40,7 +40,7 @@ export class CarComponent {
 
       if (brandId && colorId) {
         this.getCarDetailsByBrandAndColorId(brandId, colorId);
-        console.log(brandId,colorId);
+        console.log(brandId, colorId);
       } else if (brandId) {
         this.getCarDetailsByBrandId(brandId);
       } else if (colorId) {
@@ -73,7 +73,6 @@ export class CarComponent {
   getCarDetailsByBrandAndColorId(brandId: number, colorId: number) {
     this.carDetailService.getCarDetailsByBrandAndColorID(brandId, colorId).subscribe(response => {
       this.cardetails = response.data
-      console.log(this.cardetails);      
     })
   }
 

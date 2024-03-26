@@ -19,10 +19,11 @@ export class BrandAddComponent implements OnInit {
   cars: Car[] = []
   brands: Brand[] = []
   brandAddForm: FormGroup;
-  constructor(private carService:CarService,private toastr: ToastrService, private formBuilder: FormBuilder, private brandService: BrandService) { }
+  constructor(private carService: CarService, private toastr: ToastrService, private formBuilder: FormBuilder, private brandService: BrandService) { }
 
   ngOnInit(): void {
     this.getBrands()
+    this.getCars()
     this.createBrandAddForm()
   }
 
@@ -32,16 +33,38 @@ export class BrandAddComponent implements OnInit {
     })
   }
 
-  getCars(){
+  getCars() {
     this.carService.getCars().subscribe(response => {
       this.cars = response.data
     })
   }
 
+  ifThereIsCarWithThisBrand(brand: Brand): boolean {
+    for (let i = 0; i < this.cars.length; i++) {
+      debugger
+      if (this.cars[i].brandId === brand.id) {
+        return true; 
+      }
+    }
+    return false;
+  }
+
+  refreshPage() {
+    this.createBrandAddForm()
+    this.getBrands()
+    this.getCars()
+  }
+
   deleteBrand(brand: Brand) {
-    this.brandService.delete(brand).subscribe(reponse => {
-      this.toastr.success(reponse.message, "Deleted")
-    })
+    if (this.ifThereIsCarWithThisBrand(brand)) {
+      console.log(this.ifThereIsCarWithThisBrand(brand));
+      this.toastr.error("There are cars with this brand you can't delete it.", "Can't Delete")
+    } else {
+      this.brandService.delete(brand).subscribe(reponse => {
+        this.toastr.success(reponse.message, "Deleted")
+        this.refreshPage()
+      })
+    }
   }
 
   createBrandAddForm() {
@@ -55,8 +78,7 @@ export class BrandAddComponent implements OnInit {
       let brandModel = Object.assign({}, this.brandAddForm.value)
       await this.brandService.add(brandModel, (response) => {
         this.toastr.success(response.message, "Success")
-        this.createBrandAddForm()
-        this.getBrands()
+        this.refreshPage()
       }).catch(responseError => {
         for (let i = 0; i < responseError.error.Errors.length; i++) {
           this.toastr.error(responseError.error.Errors[i].ErrorMessage, "Validation Error")

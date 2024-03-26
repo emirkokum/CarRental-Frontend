@@ -7,6 +7,8 @@ import { Color } from '../../models/color';
 import { CarDetailService } from '../../services/cardetail.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RentalService } from '../../services/rental.service';
+import { Rental } from '../../models/rental';
 
 @Component({
 	selector: 'app-car-filter',
@@ -22,15 +24,17 @@ export class CarFilterComponent implements OnInit {
 	colors: Color[] = []
 	currentColor: Color;
 	emptyColor: Color;
-
+	rentals: Rental[] = []
 	routeLink = "/cars/"
 
 
-	constructor(private toastr: ToastrService, private activatedRoute: ActivatedRoute, private carDetailService: CarDetailService, private brandService: BrandService, private colorService: ColorService) { }
+	constructor(private toastr: ToastrService, private activatedRoute: ActivatedRoute, private carDetailService: CarDetailService,
+		 private brandService: BrandService, private colorService: ColorService,private rentalService:RentalService) { }
 
 	ngOnInit(): void {
 		this.getBrands()
 		this.getColors()
+		this.getRentals()
 		this.changeRouterLink()
 	}
 
@@ -45,6 +49,13 @@ export class CarFilterComponent implements OnInit {
 	getBrands() {
 		this.brandService.getBrands().subscribe(response => {
 			this.brands = response.data
+		})
+	}
+
+	getRentals(){
+		this.rentalService.getRentals().subscribe(reponse => {
+			this.rentals = reponse.data
+			console.log(this.rentals);
 		})
 	}
 

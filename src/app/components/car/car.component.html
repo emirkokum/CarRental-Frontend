@@ -1,7 +1,7 @@
 <h1 class="text-center display-4 main-title">Daily Cars</h1>
 <div class="mb-3">
-    <label for="filterText" class="form-label">Search Car</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search Car">
+    <input type="text" [(ngModel)]="filterText" class="form-control rounded-0 car-form" id="filterText"
+        placeholder="Search Car">
 </div>
 
 <div class="container p-0 my-3">
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="album py-5 bg-body-tertiary rounded shadow">
+<div class="album py-5 p-3 mb-5 bg-body-tertiary rounded-0 shadow">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
             <div *ngFor="let cardetail of cardetails | filterPipe:filterText" class="col">
@@ -23,7 +23,8 @@
                         <p class="card-text"><b>Brand Name:</b> {{ cardetail.brandName }} </p>
                         <p class="card-text"><b>Color Name:</b> {{ cardetail.colorName }} </p>
                         <div class="d-flex justify-content-center align-items-center p-3">
-                            <button routerLink="/cardetail/{{cardetail.id}}" type="button" class="btn btn-primary">Car
+                            <button routerLink="/cardetail/{{cardetail.id}}" type="button"
+                                class="btn btn-primary rounded-0 border">Car
                                 Details</button>
                         </div>
                     </div>

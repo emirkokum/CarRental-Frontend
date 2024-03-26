@@ -6,7 +6,7 @@
 }
 
 .navbar-main{
-    background-color: #E8751A;
+    background-color: #070F2B;
 }
 
 .nav-link{
@@ -14,4 +14,15 @@
     font-size: 18px;
     font-weight: 500;
     margin-right: 20px;
+}
+
+.user-badge{
+    height: 36px;
+    width: 142px;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-weight:600 ;
+    text-transform: capitalize;
 }
